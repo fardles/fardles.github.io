@@ -12,4 +12,6 @@ In many ways, I've now come back full circle to the heady teenage years of just 
 
 Some of my music comes out as {Shallow Fords}.
 
+I am currently extremely inspired by monome and the {norns}.
+
 {/sessions}

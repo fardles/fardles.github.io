@@ -1,4 +1,4 @@
-> Norns is many sound computers. 
+> Norns is many sound instruments. 
 
 - [monome](https://monome.org)
 
