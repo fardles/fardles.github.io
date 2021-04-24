@@ -10,7 +10,7 @@ A number of breakthroughs helped me along:
 
 In many ways, I've now come back full circle to the heady teenage years of just having fun and messing with things, without any real plan. This is a freeing prospect. I need to remind myself constantly that there are some things that are worth doing in and of themselves. Music is very well one of them. 
 
-Some of my music comes out as {Shallow Fords}.
+Some of my music comes out as {A Shallow Ford}.
 
 I am currently extremely inspired by monome and the {norns}.
 
