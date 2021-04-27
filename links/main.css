@@ -68,7 +68,7 @@ footer hr { margin-bottom: 15px }
 
  a:visited { color:#c13523;;} 
 
-ul { margin:0px 0px 0px 0px; }
+ul { margin:0px 0px 16px 0px; }
 
 .col2 { columns: 2 }
 .capital { text-transform: capitalize }
