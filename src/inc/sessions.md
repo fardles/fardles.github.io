@@ -3,6 +3,20 @@ A record of sessions past. This serves as a logbook for me and a reminder of wha
 For more details about what I have been using, see {tools}.
 
 <details closed>
+	<summary>24 April 2021</summary>
+	
+Session with:
+
+- {Norns}
+	- {subsets}
+- {Ableton}
+- {Prosody}
+- {Confetti}, "chopper"
+
+</details>
+
+
+<details closed>
 	<summary>10 April 2021</summary>
 
 ![210414](../media/image/210414.jpg)
@@ -10,7 +24,7 @@ For more details about what I have been using, see {tools}.
 Session with:
 
 - {Norns}
-	- {two fingers}
+	- {subsets}
 - {Ableton}
 - {Prosody}
 
