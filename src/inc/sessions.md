@@ -3,6 +3,21 @@ A record of sessions past. This serves as a logbook for me and a reminder of wha
 For more details about what I have been using, see {tools}.
 
 <details closed>
+	<summary>8 May 2021</summary>
+
+Session with:
+
+- {Norns}
+	- twine (granulator)
+- Hologram Microcosm (Mosaic mode, mostly)
+- Field recordings (water down a drain)
+- Samples - glia's yelidek
+
+Sound vs music; textures; micro-sounds; sounds within sounds. Bubbling waters, underwater, submerged, filtering, clicks. 
+
+</details>
+
+<details closed>
 	<summary>5 May 2021</summary>
 
 Session with:
