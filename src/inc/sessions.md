@@ -3,6 +3,27 @@ A record of sessions past. This serves as a logbook for me and a reminder of wha
 For more details about what I have been using, see {tools}.
 
 <details closed>
+	<summary>Late May-Early June 2021</summary>
+
+Tapes 0028 to 0040
+
+Sessions with:
+
+- {Norns}
+	- twine (granulator)
+	- {subsets}
+- Field recordings (water down a drain)
+- Samples - glia's yelidek
+
+Layering using tape:
+
+1. Subsets piano
+2. Field recordings through twine
+3. Samples through twine
+
+</details>
+
+<details closed>
 	<summary>8 May 2021</summary>
 
 Session with:
