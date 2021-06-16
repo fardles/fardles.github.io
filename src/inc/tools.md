@@ -20,6 +20,7 @@ Tools for {music}:
 - 16n
 - bleached (see also {diy})
 - Arturia Microlab (a lovely gift courtesy of some friends)
+- grids
 
 ### Past tools:
 
