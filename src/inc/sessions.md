@@ -3,6 +3,25 @@ A record of sessions past. This serves as a logbook for me and a reminder of wha
 For more details about what I have been using, see {tools}.
 
 <details closed>
+	<summary>19 June 2021 </summary>
+
+Tapes 0072, 0074
+
+Sessions with:
+
+- {Norns} + grid
+	- {cheat codes}
+	- granchild
+	- {subsets}
+- Field recordings
+- Voice live input
+
+![210619](../media/image/210619.jpg)
+
+
+</details>
+
+<details closed>
 	<summary>14 to 15 June </summary>
 
 Tapes 0052, 0060, 0062
