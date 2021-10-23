@@ -18,6 +18,48 @@
   <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
 
   <details closed>
+    <summary>23 October 2021</summary>
+    <p>Unrecorded.</p>
+    <p>Arpeggios via crow on the <i>Modular</i>, and <i>Cheat Codes 2</i> on <i>norns</i>.</p>
+    <p>Need to find a way to be more expressive. Have found a number of sweet spots in terms of notes that I like, essentially Glass. Feeling slightly stuck with the live-coding aspects of crow. Need to consider what else can be done other than simply using sequins. One idea is meta-controlling. Limited palette given that only Quadrax is the voice, hopefully will be able to find a way to remedy this.</p>
+    <pre>
+    <code>
+s = sequins
+
+function init()
+  clock.tempo = 80
+end
+
+-- {12,16}, {12,17}, {12,21}, {12,24}, {12,36}, {12,28}, {12,29}
+
+a = s{}
+ta = s{1/2}
+b = s{s{2,9,4}:count(12),s{7,4,9}:count(12)}
+tb = s{1}
+
+function arp()
+  while true do 
+    clock.sync(ta())
+    output[1].volts = a()/12
+    output[2](pulse())
+  end
+end
+
+function bass()
+  while true do
+    clock.sync(tb())
+    output[3].volts = b()/12
+    output[4](pulse())
+  end
+end
+
+clock.run(bass)
+
+    </code>
+    </pre>
+  </details>
+
+  <details closed>
 	  <summary>16 October 2021</summary>
 	  <p>Tape 0103.wav</p>
 	  <p>Zippers, crow on the <i>Modular</i>, and <i>Cheat Codes 2</i> on the <i>norns</i>.</p>
