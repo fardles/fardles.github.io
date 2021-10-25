@@ -18,6 +18,46 @@
   <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
 
   <details closed>
+    <summary>25 October 2021</summary>
+    <p>Unrecorded.</p>
+    <p>Modified druid with keybindings, crow + quadrax on the <i>Modular</i><p>
+    <p>Quite satisfied with how this little hack worked out. The code is quite ugly, but this opens the doors to a lot more expressiveness even in livecoding. The concept is simple, but I think it helps a lot as a helper in livecoding.</p>
+    <pre>
+      <code>
+s = sequins
+
+t = s{1}
+notes = s{0,2,5,7,9,11}
+attack = s{0.01,0.1}
+release = s{0.3,0.5}
+level = s{5,3,4}
+
+function init()
+  clock.tempo = 110
+end
+
+function vox()
+  while true do
+    clock.sync(t())
+    output[1].volts = notes()/12
+    output[2](ar(attack(),release(),level()))
+  end
+end
+
+function transpose(st)
+  for k,v in ipairs(notes) do
+    notes[k] = v + st
+  end
+end
+
+
+clock.run(vox)
+      </code>
+    </pre>
+
+  </details>
+
+  <details closed>
     <summary>23 October 2021</summary>
     <p>Unrecorded.</p>
     <p>Arpeggios via crow on the <i>Modular</i>, and <i>Cheat Codes 2</i> on <i>norns</i>.</p>
