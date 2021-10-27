@@ -18,6 +18,67 @@
   <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
 
   <details closed>
+    <summary>27 October 2021</summary>
+    <p>Modulating "shape" with outs 2 and 4 of <i>Quadrax</i>.</p>
+    <pre>
+      <code>
+s = sequins
+
+meta_a = s{1,2,3}
+a_prog = {{12,16,21},
+          {12,16,20},
+          {12,16,19}}
+a = s{12,16,21}
+ta = s{4}
+aa = s{0.01,0.3}
+ra = s{0.5}
+la = s{5,4,5}
+
+meta_b = s{1,2,3,4}
+b_prog = {{-3,4},
+          {-3,5},
+          {-3,6},
+          {-3,5,}}
+b = s{-3,4}
+ab = s{0.01}
+rb = s{0.5}
+tb = s{2}
+lb = s{5}
+
+function play_a()
+  while true do
+    clock.sync(ta())
+    output[1].volts = a()/12
+    output[2](ar(aa(),ra(),la()))
+  end
+end
+
+function play_b()
+  while true do
+    clock.sync(tb())
+    output[3].volts = b()/12
+    output[4](ar(ab(),rb(),lb()))
+  end
+end
+
+function move_a()
+  a:settable(a_prog[meta_a()])
+end
+
+function move_b()
+  b:settable(b_prog[meta_b()])
+end
+
+function start_a()
+  coro_a = clock.run(play_a)
+end
+      </code>
+    </pre>
+
+
+  </details>
+
+  <details closed>
     <summary>26 October 2021</summary>
     <pre>
       <code>
