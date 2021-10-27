@@ -72,6 +72,36 @@ end
 function start_a()
   coro_a = clock.run(play_a)
 end     
+
+function stop_a()
+  clock.cancel(coro_a)
+end
+
+function toggle_a()
+  if coro_a then stop_a() coro_a = nil else start_a() end
+end
+
+function start_b()
+  coro_b = clock.run(play_b)
+end
+
+function stop_b()
+  clock.cancel(coro_b)
+end
+
+function toggle_b()
+  if coro_b then stop_b() coro_b = nil else start_b() end
+end
+
+function transpose_a(st)
+  local temp_a = {}
+  for k,v in ipairs(a) do
+    temp_a[k] = v + st
+  end
+  a:settable(temp_a)
+end
+
+
       </code>
     </pre>
 
