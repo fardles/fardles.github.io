@@ -18,6 +18,67 @@
   <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
 
   <details closed>
+    <summary>28 October 2021</summary>
+    <pre>
+      <code>
+s = sequins
+
+a = {}
+a.t = s{1/4}
+a.n = s{24,28,31}
+a.cv = 1
+a.env = 2
+
+b = {}
+b.t = s{1/2}
+b.n = s{12,s{16,19}}
+b.cv = 3
+b.env = 4
+
+up_count = s{3,1,2}
+down_count = s{3,2,1}
+
+function voice(id)
+  while true do 
+    clock.sync(id.t())
+    output[id.cv].volts = id.n()/12
+    output[id.env](ar(0.01,0.5))
+  end
+end
+
+function play(id)
+  id.coro = clock.run(voice,id)
+end
+
+function stop(id)
+  clock.cancel(id.coro)
+end
+
+function up()
+  -- on the first pass, add one to third note
+  -- on the second pass, add one to first note
+  -- on the third pass, add one to second note
+  local num = up_count()
+  a.n[num] = a.n[num] + 1 
+  if num == 1 then 
+    local new_b = {a.n[num]-12,s{a.n[num]-8,a.n[num]-5}}
+    b.n:settable(new_b)
+  end
+end
+
+function down()
+  local num = down_count()
+  a.n[num] = a.n[num] - 1 
+  if num == 1 then 
+    local new_b = {a.n[num]-12,s{a.n[num]-8,a.n[num]-5}}
+    b.n:settable(new_b)
+  end
+end  
+      </code>
+    </pre>
+  </details>
+
+  <details closed>
     <summary>27 October 2021</summary>
     <p>Modulating "shape" with outs 2 and 4 of <i>Quadrax</i>.</p>
     <pre>
