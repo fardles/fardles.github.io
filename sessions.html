@@ -18,6 +18,54 @@
   <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
 
   <details closed>
+    <summary>29 October 2021</summary>
+    <pre>
+      <code>
+s = sequins
+
+function init()
+  output[1].scale{14, 17, 21}
+end
+
+scales = { {14, 17, 21}
+         , {14, 18, 21}
+         , {14, 18, 22}
+         , {15, 18, 22}
+         , {15, 19, 22}
+         }
+
+notes = s{ 2, 9}         
+count = s{ 1, 2, 3, 4, 5}
+
+function voice1()
+  output[2]( { to( 5, 2)
+             , to( 0, 15)
+             })
+  output[1].action =
+    loop{ to( dyn{height=1}:step(1)
+                           :wrap(1,4), 2)
+        , to( 0, 0.01)
+        }
+  output[1]()
+end
+
+function voice2()
+  while true do
+    clock.sync(1)
+    output[3].volts = notes()/12
+    output[4](ar(0.1,0.5))
+  end
+end
+
+function progression()
+  local num = count()
+  output[1].scale = scales[num]
+end
+      </code>
+    </pre>
+  </details>
+
+  <details closed>
     <summary>28 October 2021</summary>
     <pre>
       <code>
