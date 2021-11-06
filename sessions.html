@@ -18,6 +18,195 @@
   <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
 
   <details closed>
+    <summary>6 November 2021</summary>
+    <pre>
+      <code>
+s = sequins
+
+function init()
+  clock.tempo = 40
+end
+
+-- macro
+
+macro = s{ s{1}:count(48), s{2}:count(12),s{3}:count(24)}
+
+-- f-maj scale =
+-- {-7, -5, -3, -2, 0, 2, 4, 5}
+-- {5, 7, 9, 10, 12, 14, 16, 17}
+-- {17, 19, 21, 22, 24, 26, 29} 
+
+-- starters
+a = {}
+b = {}
+
+a.notes = {}
+a.dynamics = {}
+a.rhythm = {}
+
+b.notes = {}
+b.dynamics = {}
+b.rhythm = {}
+
+-- macro 1
+a.notes[1] = s{ s{ 5, 9, 12}:count(9)
+              , s{ 5, 9, 14}:count(3)
+              , s{ 5,10, s{14,16}}:count(9)
+              , s{ 7,10, s{14,16}}:count(3)
+              }
+
+a.dynamics[1] = {}
+a.dynamics[1].att = s{0.1, 0.2, 0.3}
+a.dynamics[1].rel = s{0.1, 0.05, 0.1}
+a.dynamics[1].lvl = s{7, 4, 5}
+
+a.rhythm[1] = s{1/2}
+
+b.notes[1] = s{ s{ -2, 2}:count(8)
+              , s{ -2, 2}:count(4)
+              , s{ -2, 5}:count(8)
+              , s{ -2, 7}:count(4)
+              }
+
+b.dynamics[1] = {}
+b.dynamics[1].att = s{0.1, 0.2}
+b.dynamics[1].rel = s{0.1, 0.05}
+b.dynamics[1].lvl = s{7, 4}
+
+b.rhythm[1] = s{1}
+
+
+-- macro 2                 
+a.notes[2] = s{ s{16,19}
+              , s{19,22}
+              }
+-- a.notes[2]:settable{ s{21}
+--                 , s{24}
+--               }
+
+a.dynamics[2] = {}
+a.dynamics[2].att = s{1, 0.3}
+a.dynamics[2].rel = s{0.3,1}
+a.dynamics[2].lvl = s{7, 4, 5}
+
+a.rhythm[2] = s{1, 3/4, 1, 1/2, 1, 1/8}
+
+b.notes[2] = s{ s{ -5}:count(4)
+              , s{ -2}:count(4)
+              }
+
+b.dynamics[2] = {}
+b.dynamics[2].att = s{0.1, 0.2}
+b.dynamics[2].rel = s{0.1, 0.05}
+b.dynamics[2].lvl = s{7, 5}
+
+b.rhythm[2] = s{1/8}
+
+
+-- macro 3
+a.notes[3] = s{ s{7, 10, s{14,16}}:count(9)
+              , s{7, 10, s{16,17}}:count(3)
+              , s{7, 12, s{16,19}}:count(9)
+              , s{9, 12, s{16,19}}:count(3)
+              }
+
+a.dynamics[3] = {}
+a.dynamics[3].att = s{0.1, 0.2, 0.3}
+a.dynamics[3].rel = s{0.1, 0.05, 0.1}
+a.dynamics[3].lvl = s{7, 4, 5}
+
+a.rhythm[3] = s{1, 1/2, 1/4}
+
+b.notes[3] = s{ s{ 24}:count(1)
+              , s{ 29}:count(1)
+              }
+
+b.dynamics[3] = {}
+b.dynamics[3].att = s{1.2}
+b.dynamics[3].rel = s{0.5}
+b.dynamics[3].lvl = s{7}
+
+b.rhythm[3] = s{4}
+
+
+-- play a (starts on load script)
+clock.run(
+  function()  
+    while true do 
+      local ma = macro()
+      clock.sync(a.rhythm[ma]())
+      local playnote = a.notes[ma]()
+      output[1].volts = playnote/12
+      print(playnote)
+      local att = a.dynamics[ma].att()
+      local rel = a.dynamics[ma].rel()
+      local lvl = a.dynamics[ma].lvl()
+      output[2](ar(att, rel, lvl))
+    end
+  end
+)
+
+-- play b 
+clock.run(
+  function()  
+    while true do 
+      local ma = macro()
+      if not b.notes[ma] then
+        print('no notes here')
+      else
+        clock.sync(b.rhythm[ma]())
+        local playnote = b.notes[ma]()
+        output[3].volts = playnote/12
+        print(playnote)
+        local att = b.dynamics[ma].att()
+        local rel = b.dynamics[ma].rel()
+        local lvl = b.dynamics[ma].lvl()
+        output[4](ar(att, rel, lvl))
+      end
+    end
+  end
+)
+
+
+-- transpose
+function transpose(vox, macro, meso, st)
+  if meso == 'all' then
+    for k,v in ipairs(vox.notes[macro]) do
+      for i,j in ipairs(vox.notes[macro][k]) do
+        vox.notes[macro][k][i] = j + st
+      end
+    end
+  else
+    for k,v in ipairs(vox.notes[macro][meso]) do
+          vox.notes[macro][meso][k] = v + st
+    end
+  end
+end
+
+-- fnl 
+function fnl(fn, origin, dest_ms, fps)
+  return clock.run(function()
+    fps = fps or 15 
+    local spf = 1/fps
+    fn(origin)
+    for _,v in ipairs(dest_ms) do
+      local count = math.floor(v[3] * fps)
+      local stepsize = (v[2]-origin)/count
+      while count > 0 do
+        clock.sleep(spf)
+        origin = origin + stepsize
+        count = count - 1
+        fn(origin)
+      end
+    end
+  end)
+end
+
+      </code>
+    </pre>
+  </details>
+  
+  <details closed>
     <summary>29 October 2021</summary>
     <pre>
       <code>
