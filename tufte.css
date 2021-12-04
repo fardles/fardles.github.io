@@ -193,7 +193,8 @@ blockquote footer {
 
 section > p,
 section > footer,
-section > table {
+section > table, 
+section > details {
     width: 55%;
 }
 

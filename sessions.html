@@ -7,6 +7,7 @@
   <link rel='stylesheet' type='text/css' href='tufte.css'>
   <link rel='stylesheet' href='js/papercolor-light.min.css'>
   <script src="js/highlight.min.js"></script>
+  <script src="js/haskell.min.js"></script>
   <script>hljs.highlightAll();</script>
   <title>Shelford Hill - Sessions</title>
 </head> 
@@ -16,6 +17,31 @@
   <p class="subtitle">Sessions</p>
   <section> 
   <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
+
+  <details closed>
+    <summary>Late November - early December 2021</summary>
+    <p>Getting back into Ableton Live and the Madrona suite of instruments. Kaivo is particularly inspiring right now. It is difficult to avoid, on the one hand, just making noise, and on the other, coming too close to cheesy and overdone sounds. I need to work on my understanding of these instruments, while taking the time to play. Using a velocity-sensitive keyboard has made it much more expressive: there were indeed moments when I <i>felt</i> what I was playing. Thinking of looking into a Soundplane (from Madrona) when the new model is released. At the same time, burdened with a desire to shed some more weight in terms of equipment. I am starting to consider how to rationalise (at least, in procedural and meta terms) my music practice.</p>
+
+    <p>Overthought and overwrought, but I <i>think</i> I am getting somewhere.</p>
+  </details>
+
+  <details closed>
+    <summary>23 November 2021</summary>
+    <pre>
+      <code class="language-haskell">
+  d1 $ slow 4
+   $ jux(rev)
+   $ n "[2*2 [7 5/2] <[9 7] 12_>, -10 <-12 -3>]"
+   # s "supersaw"
+   # lfo "0.5 0.1 1"
+   # ring "1 0.5"
+   # freeze "0 1"   
+   # distort "0 0.5 1"
+   # crush 16
+   # waveloss (range 50 100 $ sine)
+      </code>
+    </pre>
+  </details>
 
   <details closed>
     <summary>6 November 2021</summary>
