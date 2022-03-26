@@ -1,0 +1,833 @@
+<DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="This is where he plays.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' type='text/css' href='../tufte.css'>
+  <link rel='stylesheet' href='js/papercolor-light.min.css'>
+  <script src="js/highlight.min.js"></script>
+  <script src="js/haskell.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <title>Shelford Hill - Sessions</title>
+</head> 
+<body>
+<article>
+<h1><a href="../index.html" class="no-tufte-underline">Shelford Hill</a></h1>
+  <p class="subtitle">Sessions</p>
+  <section> 
+  <p> This is where he plays, a log, of things tried, and failed, and tried again, as the saying goes. Musical waves lap against the rocks of defeat. And yet, sometimes, the undertow is strong enough, and one emerges on the other side, beaten yet undefeated.</p>
+
+  <details closed>
+    <summary>Late November - early December 2021</summary>
+    <p>Getting back into Ableton Live and the Madrona suite of instruments. Kaivo is particularly inspiring right now. It is difficult to avoid, on the one hand, just making noise, and on the other, coming too close to cheesy and overdone sounds. I need to work on my understanding of these instruments, while taking the time to play. Using a velocity-sensitive keyboard has made it much more expressive: there were indeed moments when I <i>felt</i> what I was playing. Thinking of looking into a Soundplane (from Madrona) when the new model is released. At the same time, burdened with a desire to shed some more weight in terms of equipment. I am starting to consider how to rationalise (at least, in procedural and meta terms) my music practice.</p>
+
+    <p>Overthought and overwrought, but I <i>think</i> I am getting somewhere.</p>
+  </details>
+
+  <details closed>
+    <summary>23 November 2021</summary>
+    <pre>
+      <code class="language-haskell">
+  d1 $ slow 4
+   $ jux(rev)
+   $ n "[2*2 [7 5/2] <[9 7] 12_>, -10 <-12 -3>]"
+   # s "supersaw"
+   # lfo "0.5 0.1 1"
+   # ring "1 0.5"
+   # freeze "0 1"   
+   # distort "0 0.5 1"
+   # crush 16
+   # waveloss (range 50 100 $ sine)
+      </code>
+    </pre>
+  </details>
+
+  <details closed>
+    <summary>6 November 2021</summary>
+    <pre>
+      <code>
+s = sequins
+
+function init()
+  clock.tempo = 40
+end
+
+-- macro
+
+macro = s{ s{1}:count(48), s{2}:count(12),s{3}:count(24)}
+
+-- f-maj scale =
+-- {-7, -5, -3, -2, 0, 2, 4, 5}
+-- {5, 7, 9, 10, 12, 14, 16, 17}
+-- {17, 19, 21, 22, 24, 26, 29} 
+
+-- starters
+a = {}
+b = {}
+
+a.notes = {}
+a.dynamics = {}
+a.rhythm = {}
+
+b.notes = {}
+b.dynamics = {}
+b.rhythm = {}
+
+-- macro 1
+a.notes[1] = s{ s{ 5, 9, 12}:count(9)
+              , s{ 5, 9, 14}:count(3)
+              , s{ 5,10, s{14,16}}:count(9)
+              , s{ 7,10, s{14,16}}:count(3)
+              }
+
+a.dynamics[1] = {}
+a.dynamics[1].att = s{0.1, 0.2, 0.3}
+a.dynamics[1].rel = s{0.1, 0.05, 0.1}
+a.dynamics[1].lvl = s{7, 4, 5}
+
+a.rhythm[1] = s{1/2}
+
+b.notes[1] = s{ s{ -2, 2}:count(8)
+              , s{ -2, 2}:count(4)
+              , s{ -2, 5}:count(8)
+              , s{ -2, 7}:count(4)
+              }
+
+b.dynamics[1] = {}
+b.dynamics[1].att = s{0.1, 0.2}
+b.dynamics[1].rel = s{0.1, 0.05}
+b.dynamics[1].lvl = s{7, 4}
+
+b.rhythm[1] = s{1}
+
+
+-- macro 2                 
+a.notes[2] = s{ s{16,19}
+              , s{19,22}
+              }
+-- a.notes[2]:settable{ s{21}
+--                 , s{24}
+--               }
+
+a.dynamics[2] = {}
+a.dynamics[2].att = s{1, 0.3}
+a.dynamics[2].rel = s{0.3,1}
+a.dynamics[2].lvl = s{7, 4, 5}
+
+a.rhythm[2] = s{1, 3/4, 1, 1/2, 1, 1/8}
+
+b.notes[2] = s{ s{ -5}:count(4)
+              , s{ -2}:count(4)
+              }
+
+b.dynamics[2] = {}
+b.dynamics[2].att = s{0.1, 0.2}
+b.dynamics[2].rel = s{0.1, 0.05}
+b.dynamics[2].lvl = s{7, 5}
+
+b.rhythm[2] = s{1/8}
+
+
+-- macro 3
+a.notes[3] = s{ s{7, 10, s{14,16}}:count(9)
+              , s{7, 10, s{16,17}}:count(3)
+              , s{7, 12, s{16,19}}:count(9)
+              , s{9, 12, s{16,19}}:count(3)
+              }
+
+a.dynamics[3] = {}
+a.dynamics[3].att = s{0.1, 0.2, 0.3}
+a.dynamics[3].rel = s{0.1, 0.05, 0.1}
+a.dynamics[3].lvl = s{7, 4, 5}
+
+a.rhythm[3] = s{1, 1/2, 1/4}
+
+b.notes[3] = s{ s{ 24}:count(1)
+              , s{ 29}:count(1)
+              }
+
+b.dynamics[3] = {}
+b.dynamics[3].att = s{1.2}
+b.dynamics[3].rel = s{0.5}
+b.dynamics[3].lvl = s{7}
+
+b.rhythm[3] = s{4}
+
+
+-- play a (starts on load script)
+clock.run(
+  function()  
+    while true do 
+      local ma = macro()
+      clock.sync(a.rhythm[ma]())
+      local playnote = a.notes[ma]()
+      output[1].volts = playnote/12
+      print(playnote)
+      local att = a.dynamics[ma].att()
+      local rel = a.dynamics[ma].rel()
+      local lvl = a.dynamics[ma].lvl()
+      output[2](ar(att, rel, lvl))
+    end
+  end
+)
+
+-- play b 
+clock.run(
+  function()  
+    while true do 
+      local ma = macro()
+      if not b.notes[ma] then
+        print('no notes here')
+      else
+        clock.sync(b.rhythm[ma]())
+        local playnote = b.notes[ma]()
+        output[3].volts = playnote/12
+        print(playnote)
+        local att = b.dynamics[ma].att()
+        local rel = b.dynamics[ma].rel()
+        local lvl = b.dynamics[ma].lvl()
+        output[4](ar(att, rel, lvl))
+      end
+    end
+  end
+)
+
+
+-- transpose
+function transpose(vox, macro, meso, st)
+  if meso == 'all' then
+    for k,v in ipairs(vox.notes[macro]) do
+      for i,j in ipairs(vox.notes[macro][k]) do
+        vox.notes[macro][k][i] = j + st
+      end
+    end
+  else
+    for k,v in ipairs(vox.notes[macro][meso]) do
+          vox.notes[macro][meso][k] = v + st
+    end
+  end
+end
+
+-- fnl 
+function fnl(fn, origin, dest_ms, fps)
+  return clock.run(function()
+    fps = fps or 15 
+    local spf = 1/fps
+    fn(origin)
+    for _,v in ipairs(dest_ms) do
+      local count = math.floor(v[3] * fps)
+      local stepsize = (v[2]-origin)/count
+      while count > 0 do
+        clock.sleep(spf)
+        origin = origin + stepsize
+        count = count - 1
+        fn(origin)
+      end
+    end
+  end)
+end
+
+      </code>
+    </pre>
+  </details>
+  
+  <details closed>
+    <summary>29 October 2021</summary>
+    <pre>
+      <code>
+s = sequins
+
+function init()
+  output[1].scale{14, 17, 21}
+end
+
+scales = { {14, 17, 21}
+         , {14, 18, 21}
+         , {14, 18, 22}
+         , {15, 18, 22}
+         , {15, 19, 22}
+         }
+
+notes = s{ 2, 9}         
+count = s{ 1, 2, 3, 4, 5}
+
+function voice1()
+  output[2]( { to( 5, 2)
+             , to( 0, 15)
+             })
+  output[1].action =
+    loop{ to( dyn{height=1}:step(1)
+                           :wrap(1,4), 2)
+        , to( 0, 0.01)
+        }
+  output[1]()
+end
+
+function voice2()
+  while true do
+    clock.sync(1)
+    output[3].volts = notes()/12
+    output[4](ar(0.1,0.5))
+  end
+end
+
+function progression()
+  local num = count()
+  output[1].scale = scales[num]
+end
+      </code>
+    </pre>
+  </details>
+
+  <details closed>
+    <summary>28 October 2021</summary>
+    <pre>
+      <code>
+s = sequins
+
+a = {}
+a.t = s{1/4}
+a.n = s{24,28,31}
+a.cv = 1
+a.env = 2
+
+b = {}
+b.t = s{1/2}
+b.n = s{12,s{16,19}}
+b.cv = 3
+b.env = 4
+
+up_count = s{3,1,2}
+down_count = s{3,2,1}
+
+function voice(id)
+  while true do 
+    clock.sync(id.t())
+    output[id.cv].volts = id.n()/12
+    output[id.env](ar(0.01,0.5))
+  end
+end
+
+function play(id)
+  id.coro = clock.run(voice,id)
+end
+
+function stop(id)
+  clock.cancel(id.coro)
+end
+
+function up()
+  -- on the first pass, add one to third note
+  -- on the second pass, add one to first note
+  -- on the third pass, add one to second note
+  local num = up_count()
+  a.n[num] = a.n[num] + 1 
+  if num == 1 then 
+    local new_b = {a.n[num]-12,s{a.n[num]-8,a.n[num]-5}}
+    b.n:settable(new_b)
+  end
+end
+
+function down()
+  local num = down_count()
+  a.n[num] = a.n[num] - 1 
+  if num == 1 then 
+    local new_b = {a.n[num]-12,s{a.n[num]-8,a.n[num]-5}}
+    b.n:settable(new_b)
+  end
+end  
+      </code>
+    </pre>
+  </details>
+
+  <details closed>
+    <summary>27 October 2021</summary>
+    <p>Modulating "shape" with outs 2 and 4 of <i>Quadrax</i>.</p>
+    <pre>
+      <code>
+s = sequins
+
+meta_a = s{1,2,3}
+a_prog = {{12,16,21},
+          {12,16,20},
+          {12,16,19}}
+a = s{12,16,21}
+ta = s{4}
+aa = s{0.01,0.3}
+ra = s{0.5}
+la = s{5,4,5}
+
+meta_b = s{1,2,3,4}
+b_prog = {{-3,4},
+          {-3,5},
+          {-3,6},
+          {-3,5,}}
+b = s{-3,4}
+ab = s{0.01}
+rb = s{0.5}
+tb = s{2}
+lb = s{5}
+
+function play_a()
+  while true do
+    clock.sync(ta())
+    output[1].volts = a()/12
+    output[2](ar(aa(),ra(),la()))
+  end
+end
+
+function play_b()
+  while true do
+    clock.sync(tb())
+    output[3].volts = b()/12
+    output[4](ar(ab(),rb(),lb()))
+  end
+end
+
+function move_a()
+  a:settable(a_prog[meta_a()])
+end
+
+function move_b()
+  b:settable(b_prog[meta_b()])
+end
+
+function start_a()
+  coro_a = clock.run(play_a)
+end     
+
+function stop_a()
+  clock.cancel(coro_a)
+end
+
+function toggle_a()
+  if coro_a then stop_a() coro_a = nil else start_a() end
+end
+
+function start_b()
+  coro_b = clock.run(play_b)
+end
+
+function stop_b()
+  clock.cancel(coro_b)
+end
+
+function toggle_b()
+  if coro_b then stop_b() coro_b = nil else start_b() end
+end
+
+function transpose_a(st)
+  local temp_a = {}
+  for k,v in ipairs(a) do
+    temp_a[k] = v + st
+  end
+  a:settable(temp_a)
+end
+
+
+      </code>
+    </pre>
+
+
+  </details>
+
+  <details closed>
+    <summary>26 October 2021</summary>
+    <pre>
+      <code>
+s = sequins
+
+meta_a = s{1,2,3}
+a_prog = {{12,16,21},
+          {12,16,20},
+          {12,16,19}}
+a = s{12,16,21}
+ta = s{1}
+aa = s{0.01,0.3}
+ra = s{0.5}
+la = s{5,4,5}
+
+meta_b = s{1,2,3,4}
+b_prog = {{0,2,4},
+          {0,2,5},
+          {0,2,12},
+          {0,2,7,}}
+b = s{0,2,4}
+ab = s{0.01}
+rb = s{0.5}
+tb = s{1}
+lb = s{5}
+
+function play_a()
+  while true do
+    clock.sync(ta())
+    output[1].volts = a()/12
+    output[2](ar(aa(),ra(),la()))
+  end
+end
+
+function play_b()
+  while true do
+    clock.sync(tb())
+    output[3].volts = b()/12
+    output[4](ar(ab(),rb(),lb()))
+  end
+end
+
+function move_a()
+  a:settable(a_prog[meta_a()])
+end
+
+function move_b()
+  b:settable(b_prog[meta_b()])
+end
+
+function start_a()
+  coro_a = clock.run(play_a)
+end
+      </code>
+    </pre>
+  </details>
+  <details closed>
+    <summary>25 October 2021</summary>
+    <p>Unrecorded.</p>
+    <p>Modified druid with keybindings, crow + quadrax on the <i>Modular</i><p>
+    <p>Quite satisfied with how this little hack worked out. The code is quite ugly, but this opens the doors to a lot more expressiveness even in livecoding. The concept is simple, but I think it helps a lot as a helper in livecoding.</p>
+    <pre>
+      <code>
+s = sequins
+
+t = s{1}
+notes = s{0,2,5,7,9,11}
+attack = s{0.01,0.1}
+release = s{0.3,0.5}
+level = s{5,3,4}
+
+function init()
+  clock.tempo = 110
+end
+
+function vox()
+  while true do
+    clock.sync(t())
+    output[1].volts = notes()/12
+    output[2](ar(attack(),release(),level()))
+  end
+end
+
+function transpose(st)
+  for k,v in ipairs(notes) do
+    notes[k] = v + st
+  end
+end
+
+
+clock.run(vox)
+      </code>
+    </pre>
+
+  </details>
+
+  <details closed>
+    <summary>23 October 2021</summary>
+    <p>Unrecorded.</p>
+    <p>Arpeggios via crow on the <i>Modular</i>, and <i>Cheat Codes 2</i> on <i>norns</i>.</p>
+    <p>Need to find a way to be more expressive. Have found a number of sweet spots in terms of notes that I like, essentially Glass. Feeling slightly stuck with the live-coding aspects of crow. Need to consider what else can be done other than simply using sequins. One idea is meta-controlling. Limited palette given that only Quadrax is the voice, hopefully will be able to find a way to remedy this.</p>
+    <pre>
+    <code>
+s = sequins
+
+function init()
+  clock.tempo = 80
+end
+
+-- {12,16}, {12,17}, {12,21}, {12,24}, {12,36}, {12,28}, {12,29}
+
+a = s{}
+ta = s{1/2}
+b = s{s{2,9,4}:count(12),s{7,4,9}:count(12)}
+tb = s{1}
+
+function arp()
+  while true do 
+    clock.sync(ta())
+    output[1].volts = a()/12
+    output[2](pulse())
+  end
+end
+
+function bass()
+  while true do
+    clock.sync(tb())
+    output[3].volts = b()/12
+    output[4](pulse())
+  end
+end
+
+clock.run(bass)
+
+    </code>
+    </pre>
+  </details>
+
+  <details closed>
+	  <summary>16 October 2021</summary>
+	  <p>Tape 0103.wav</p>
+	  <p>Zippers, crow on the <i>Modular</i>, and <i>Cheat Codes 2</i> on the <i>norns</i>.</p>
+	  <p>Lessons: (a) the bassline was too repetitive and needed some more dynamism; (b) some of the transitions were not smooth enough (for the context); (c) the sounds were ultimately quite stale after a while (need more modulation on the timbre).</p>
+  </details>
+
+  <details closed>
+	  <summary>12 October 2021</summary>
+	  <p>Unrecorded.</p>
+	  <p>Zippers: see <i>Maps</i>, S2E1.</p>
+	  <pre>
+	  <code>
+s = sequins
+
+function init()
+    clock.tempo = 80
+    output[1].scale({0,4,5,7,9})
+end
+
+bn = s{4,7,9}
+bt = s{1,1,1/2}
+
+function play_bass()
+    while true do
+        clock.sync(bt())
+        output[3].volts = bn()/12
+        output[4](pulse())
+    end
+end
+
+bass = clock.run(play_bass)
+
+--see s2e2 of maps
+stages = s{
+        {2,2}
+       ,{1.8,0.2}
+       ,{1.3,0.5}
+       ,{0.8,1}
+  }
+
+-- use melody(1,math.random(1,4))
+
+function melody(octave,stretch)
+    local o = octave or 1 --not quite octave but close enough
+    local st = stretch or 1
+    output[2](ar(0.1,7.4*st))
+    clock.run(function()
+        for i=1,8 do
+    local stage = stages()
+    output[1].slew = stage[2]/2 * st
+    output[1].volts = stage[1] * o
+    if stage[3] then
+        output[1].shape = stage[3]
+    else
+        output[1].shape = 'linear'
+    end
+  clock.sleep(stage[2] * st)
+  end
+    end)
+end
+    </code>
+  </pre>
+</details>
+
+  <details closed>
+	  <summary>11 October 2021</summary>
+	  <p>Unrecorded.</p>
+	  <p>Lessons in (a) music theory (scales, arpeggios); (b) use of <code>true</code> and <code>false</code> to create timing; (c) attempts at modulation.</p>
+	  <p><i>Quadrax</i> Channel 1 voice, Channel 2 envelope, into VCA, into <i>FX Aid</i>. <i>PNW</i> modulating Shape 1 and Fall 2.</p>
+	  <pre>
+	  <code>
+s = sequins
+
+clock.tempo = 180
+
+-- scale reference: {0,2,3,5,7,9}
+-- s{s{0,3,7}:count(9),s{0,4,7}:count(6)}
+-- s{s{2,5,9}:count(6),s{2,4,9}:count(3),s{2,6,9}:count(6)}
+-- s{4,6,7,9,11,13}
+-- s{4,6,11}
+-- s{4,6,s{11,13,15}}
+
+a = s{s{2,5,9}:count(6),s{2,4,9}:count(3),s{2,6,9}:count(6)}
+b = s{0,4}
+
+X = true
+O = false
+p = s{X,X,X,0}
+
+t = s{1/2}
+
+function play()
+    while true do
+        clock.sync(t())
+            if p() then
+                output[1].volts = a()/12
+                output[2](pulse())
+            end
+    end
+end
+
+function mod()
+    output[3].slew = 0.5
+    output[3].volts = b()
+    clock.sleep(8/3)
+end
+
+clock.run(play)
+	  </code>
+	  </pre>
+
+  </details>
+
+  <details closed>
+	  <summary>Early October 2021</summary>
+	  <p>Tape 102 and many more unrecorded</p>
+	  <p>Sessions with</p>
+	  <ul>
+		  <li>crow</li>
+		  <li>the modular (yet to be named: as of 9 October 2021)</li>
+		  <li>the old T420, given new life</li>
+	  </ul>
+  </details>
+
+  <details closed>
+    <summary>19 June 2021 </summary>
+      <p>Tapes 0072, 0074</p>
+      <p>Sessions with:</p>
+          <ul>
+          <li>norns+ grid
+          <ul>
+          <li>cheat codes</li>
+          <li>granchild</li>
+          <li>subsets</li>
+          </ul>
+          </li>
+          <li>Field recordings</li>
+          <li>Voice live input</li>
+          </ul>
+  </details>
+
+  <details closed>
+    <summary>14 to 15 June </summary>
+      <p>Tapes 0052, 0060, 0062</p>
+      <p>Sessions with:</p>
+        <ul>
+          <li>norns + grid
+          <ul>
+            <li>cheat codes</li>
+            <li>granchild</li>
+            <li>subsets</li>
+          </ul>
+          </li>
+          <li>Field recordings</li>
+        </ul>
+</details>
+
+  <details closed>
+    <summary>Late May-Early June 2021</summary>
+    <p>Tapes 0028 to 0040</p>
+    <p>Sessions with:</p>
+      <ul>
+        <li>norns
+        <ul>
+          <li>twine (granulator)</li>
+          <li>subsets</li>
+        </ul>
+        </li>
+        <li>Field recordings (water down a drain)</li>
+        <li>Samples - glia's yelidek</li>
+      </ul>
+      <p>Layering using tape:</p>
+        <ol>
+          <li>Subsets piano</li>
+          <li>Field recordings through twine</li>
+          <li>Samples through twine</li>
+      </ol>
+</details>
+
+<details closed>
+  <summary>8 May 2021</summary>
+<p>Session with:</p>
+<ul>
+<li>norns
+<ul>
+<li>twine (granulator)</li>
+</ul>
+</li>
+<li>Hologram Microcosm (Mosaic mode, mostly)</li>
+<li>Field recordings (water down a drain)</li>
+<li>Samples - glia's yelidek</li>
+</ul>
+<p>Sound vs music; textures; micro-sounds; sounds within sounds. Bubbling waters, underwater, submerged, filtering, clicks.</p>
+</details>
+
+<details closed>
+  <summary>5 May 2021</summary>
+<p>Session with:</p>
+<ul>
+<li>norns
+<ul>
+<li>twine (granulator)</li>
+<li>subsets</li>
+</ul>
+</li>
+<li>Field recordings ('field' meaning the bathroom -- there was a most amazing sound when the water was emptying from O's bathtub)</li>
+</ul>
+<p>Thinking about: (a) how to combine sounds &amp; music; (b) what is the significance of discovering sounds within sounds; (c) how to listen, how to perform, how to listen when not performing.</p>
+</details>
+
+<details closed>
+  <summary>27 April 2021</summary>
+<p>Gurgles - rivulets - water - streams - depths - underground - life</p>
+<p>Session with:</p>
+<ul>
+<li>norns
+<ul>
+<li>twine (granulator)</li>
+</ul>
+</li>
+<li>Field recordings (water_under_the_fridge_edited.wav)</li>
+</ul>
+</details>
+
+<details closed>
+  <summary>24 April 2021</summary>
+<p>Session with:</p>
+<ul>
+<li>norns
+<ul>
+<li>subsets</li>
+</ul>
+</li>
+<li>ableton</li>
+<li>prosody</li>
+<li>confetti, &quot;chopper&quot;</li>
+</ul>
+</details>
+
+<details closed>
+  <summary>10 April 2021</summary>
+<p>Session with:</p>
+<ul>
+<li>norns
+<ul>
+<li>subsets</li>
+</ul>
+</li>
+<li>ableton</li>
+<li>prosody</li>
+</ul>
+</details>
+
+  </section>
+</article>
+</body>
+</html>
+
+
